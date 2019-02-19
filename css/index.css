@@ -1,0 +1,282 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    box-sizing: border-box;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: white;
+}
+.window {
+    background-color: rgba(255,255,255,1);
+    color: #333;
+    position: fixed;
+    width: 600px;
+    height: 400px;
+    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    outline: solid;
+    outline-width: 1px;
+    outline-color: #222;
+    display: inline-block;
+    z-index: 550;
+    touch-action: none;
+}
+.window-maximized {
+    display: inline-block;
+    width: 100% !important;
+    height: 100% !important;
+    margin-bottom: -30px;
+}
+.window-body {
+    overflow: auto;
+    width: inherit;
+    height: inherit;
+    padding-top: 30px;
+}
+.window-selected {
+    z-index: 600;
+}
+.window-handle {
+    background-color: #fff;
+    height: 30px;
+    width: inherit;
+    position: absolute;
+    z-index: 999;
+}
+.window-actions {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.window-actions li {
+    float: left;
+    cursor: pointer;
+}
+.window-actions li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+.window-actions li .button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#mainwindow {
+    display: inline-block;
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100vh;
+    margin-bottom: -50px;
+    z-index: 100;
+}
+
+#taskbar {
+    height: 50px;
+    width: 100%;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    box-shadow: 0 -4px 5px 3px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+}
+.taskbar-slots {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.taskbar-slots li {
+    float: left;
+    cursor: pointer;
+}
+.taskbar-slots li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+}
+.taskbar-slots li .button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.taskbar-slot-right {
+    float: right !important;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+}
+
+.dropbtn {
+    display: inline-block;
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 100;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.menu {
+    min-width: 120px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    display: none;
+    z-index: 1001;
+  }
+  .menu .menu-options {
+    list-style: none;
+    padding: 10px 0;
+  }
+  .menu .menu-options .menu-option {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 40px 10px 20px;
+    cursor: pointer;
+  }
+  .menu .menu-options .menu-option:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .menu .dropdown-content {
+      position: relative;
+      top: 0px;
+      left: 80px;
+      margin-bottom: 12px;
+  }
+
+#mainmenu-content {
+    display: none;
+    position: fixed;
+    bottom: 50px;
+    left: 0px;
+    background-color: #fff;
+    min-width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+#mainmenu-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+#mainmenu-content a:hover {background-color: rgba(0,0,0,0.2)}
+
+.mainmenu:hover #mainmenu-content {
+    display: block;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    position: relative;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    position: relative;
+    right: 12px;
+    top: 0px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+
+.f-right {
+    float: right !important;
+}
+.f-left {
+    float: left !important;
+}
+.d-none {
+    display: none !important;
+}
+.d-inline {
+    display: inline !important;
+}
+.d-block {
+    display: block !important;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  [class*="col-"] {
+    float: left;
+  }
+  
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+#wallpaper {
+    background-image: url("../images/desk-wallpaper.jpg");
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OS</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/mobile.css">
+    <link rel="stylesheet" href="vender/fontawesome/css/font-awesome.min.css">
+</head>
+<body>
+<div class="menu">
+    <ul class="menu-options">
+        <li class="menu-option">Copy</li>
+        <li class="menu-option">Paste</li>
+        <li class="menu-option dropdown">
+            New
+            <div class="dropdown-content">
+                <a href="#">Folder</a>
+                <a href="#">File</a>
+                <a href="#">Project</a>
+            </div>
+        </li>
+        <li class="menu-option dropdown">
+            Open In
+            <div class="dropdown-content">
+                <a href="#">TextEditor</a>
+                <a href="#">Editor</a>
+                <a href="#">Connection</a>
+            </div>
+        </li>
+        <li class="menu-option dropdown">
+                Personalize
+                <div class="dropdown-content">
+                    <a href="#">Change View</a>
+                    <a href="#">Change Background</a>
+                    <a href="#">Change Theme</a>
+                </div>
+        </li>
+        <li class="menu-option dropdown">
+                Pereferences
+                <div class="dropdown-content">
+                    <a href="#">Display Pereferences</a>
+                    <a href="#">System Pereferences</a>
+                </div>
+        </li>
+    </ul>
+</div>
+<div id="wallpaper">
+    <div id="mainwindow"></div>
+</div>
+<div id="taskbar" class="noselect">
+    <ul class="taskbar-slots">
+        <li class="mainmenu">
+            <a class="button">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </a>
+            <div id="mainmenu-content" bind="apps:innerHTML">
+                <a onclick="openApp('${name}')">
+                    ${icon} &nbsp;&nbsp; ${name}
+                </a>
+            </div>
+        </li>
+        <div id="openApps"></div>
+        <li class="f-right" id="datetimeWrapper">
+            <a class="button">
+                <span id="datetime"></span>
+            </a>
+        </li>
+    </ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/interactjs@1.3/dist/interact.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+<script src="./vender/jsonc.js"></script>
+<script src="./js/wieldy.js"></script>
+<script src="./js/init.js"></script>
+<script src="./js/utils.js"></script>
+<script src="./js/fileSystem.js"></script>
+<script src="./js/windowProcessor.js"></script>
+<script src="./js/context_menu.js"></script>
+<script src="./js/apps.js"></script>
+<script src="./js/appProcessor.js"></script>
+<script src="./js/taskbar.js"></script>
+</body>
+</html> 
