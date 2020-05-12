@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS OS</title>
+    <title>WebTop</title>
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/mobile.css">
-    <link rel="stylesheet" href="vender/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./vender/animate.css">
+    <link rel="stylesheet" href="./vender/fontawesome/css/font-awesome.min.css">
 </head>
 <body>
 <div class="menu">
@@ -46,6 +47,11 @@
         </li>
     </ul>
 </div>
+<div id="chooseApplication" class="d-none">
+    <h2>Choose an Application</h2>
+    <ul id="chooseApplicationList">
+    </ul>
+</div>
 <div id="wallpaper">
     <div id="mainwindow"></div>
 </div>
@@ -75,7 +81,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 <script src="./vender/jsonc.js"></script>
 <script src="./js/wieldy.js"></script>
-<script src="./js/init.js"></script>
+<script src="./js/audioAPI.js"></script>
 <script src="./js/utils.js"></script>
 <script src="./js/fileSystem.js"></script>
 <script src="./js/windowProcessor.js"></script>
@@ -83,5 +89,6 @@
 <script src="./js/apps.js"></script>
 <script src="./js/appProcessor.js"></script>
 <script src="./js/taskbar.js"></script>
+<script src="./js/init.js"></script>
 </body>
 </html> 

@@ -19,11 +19,6 @@ interact('.draggable')
       // do something
     }
   });
-
-  interact('.window-handle')
-  .on('doubletap', function (event) {
-    maximizeWindow(event.currentTarget);
-  });
   function dragMoveListener (event) {
     var target = event.target,
         // keep the dragged position in the data-x/data-y attributes
@@ -76,12 +71,13 @@ interact('.draggable')
     win.className = "window";
     win.innerHTML = html;
     document.getElementById("mainwindow").appendChild(win);
+    animate(document.getElementById(id),"zoomIn");
     document.getElementById(id).addEventListener("mousedown",function(event){
-      var prevSelected = document.querySelector(".window-selected");
-      if (prevSelected) {
-        prevSelected.classList.remove('window-selected');
-      }
-      event.currentTarget.classList.add('window-selected');
+      selectWindow(id);
+    });
+    interact(document.getElementById(id).querySelector('.window-handle'))
+    .on('doubletap', function (event) {
+      maximizeWindow(id);
     });
     setTimeout(function(){
       interact('#'+id)
@@ -136,7 +132,8 @@ interact('.draggable')
         target.setAttribute('data-x', x);
         target.setAttribute('data-y', y);
       });
-    }, 500);
+      selectWindow(id);
+    }, 100);
   }
 
   function placeWindow(winId, x, y) {
@@ -148,14 +145,23 @@ interact('.draggable')
   function toggleWindowDisplay(winId) {
     var winElem = document.getElementById(winId);
     if (winElem.classList.contains("d-none")) {
-      winElem.classList.toggle("d-none");
-      var prevSelected = document.querySelector(".window-selected");
-      if (prevSelected) {
-        prevSelected.classList.remove('window-selected');
-      }
-      winElem.classList.add('window-selected');
+      // Show window
+      winElem.classList.remove("d-none");
+      document.getElementById(winId+"tab").classList.add("active");
+      animate(winElem,"zoomIn",false,function() {
+        winElem.classList.remove("d-none");
+        selectWindow(winId);
+      });
     } else {
-      winElem.classList.add('d-none');
+      if (winElem.classList.contains("window-selected")) {
+        // Hide window
+        document.getElementById(winId+"tab").classList.remove("active");
+        animate(winElem,"zoomOut",false,function() {
+          winElem.classList.add('d-none');
+        });
+      } else {
+        selectWindow(winId);
+      }
     }
   }
 
@@ -181,9 +187,19 @@ interact('.draggable')
   function closeWindow(winId) {
     var winElem = document.getElementById(winId);
     var winTab = document.getElementById(winId+"tab");
-    // close the window 
-    winElem.parentElement.removeChild(winElem);
-    // and remove the tab from the taskbar
-    winTab.parentElement.removeChild(winTab);
+    animate(document.getElementById(winId),"zoomOut",false,function() {
+      // close the window 
+      winElem.parentElement.removeChild(winElem);
+      // and remove the tab from the taskbar
+      winTab.parentElement.removeChild(winTab);
+    });
   }
 
+  function selectWindow(winId) {
+    var winElem = document.getElementById(winId);
+    var prevSelected = document.querySelector(".window-selected");
+    if (prevSelected) {
+      prevSelected.classList.remove('window-selected');
+    }
+    winElem.classList.add('window-selected');
+  }

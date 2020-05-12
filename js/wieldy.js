@@ -140,7 +140,6 @@ var Wieldable = function(v){
                   input = true;
                 }
                 binding = binding.trim();
-                console.log(scope[binding],typeof scope[binding])
                 if (typeof scope[binding] === "undefined") {
                   scope[binding] = new Wieldable();
                 }

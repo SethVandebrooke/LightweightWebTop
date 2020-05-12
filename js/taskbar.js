@@ -20,12 +20,10 @@ function date_time(id) {
   if (s < 10) {
     s = "0" + s;
   }
-  result = '' + days[day] + ' ' + months[month] + ' ' + d + ' ' + year + ' ' + h + ':' + m + ' ' + period;
+  result = /*'' + days[day] + ' ' + months[month] + ' ' + d + ' ' + year + ' ' +*/ h + ':' + m + ' ' + period;
   document.getElementById(id).innerHTML = result;
   setTimeout(function () {
     date_time(id);
   }, 1000);
   return true;
 }
-
-date_time("datetime");

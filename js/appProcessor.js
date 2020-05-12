@@ -1,17 +1,4 @@
-var appsInstalled = {};
-
-loadApp("FileManager");
-loadApp("TextEditor");
-loadApp("RichTextEditor");
-loadApp("Spotify");
-loadApp("AppMaker");
-
-var appsRunning = [];
-
-//fileExtensionSupport
-var FES = new BUS();
-
-function openApp(name) {
+function openApp(name, data) {
   var app = appsInstalled[name];
   var windowId = name.split(" ").join("")
     +Math.floor(Math.random()*10000000);
@@ -28,13 +15,13 @@ function openApp(name) {
   // init javascript
   if ("string" === typeof app.package.code) {
     try {
-      win.process = new AsyncFunction("window", "document", "$", "winId", app.package.code)(win,win,jQuery,windowId);
+      win.process = new AsyncFunction("window", "document", "$", "winId", "data", app.package.code)(win,win,jQuery,windowId,data);
     } catch (e) {
       console.log("There was an issue trying to run the backend code associated with the "+name+" application",e);
     }
   } else if ("function" === typeof app.package.code) {
     try {
-      win.process = app.package.code(win,win,jQuery,windowId);
+      win.process = app.package.code(win,win,jQuery,windowId,data);
     } catch (e) {
       console.log("There was an issue trying to run the backend code associated with the "+name+" application",e);
     }
@@ -43,6 +30,7 @@ function openApp(name) {
   // add app to taskbar
   var tab = document.createElement("li");
   tab.id = windowId+"tab";
+  tab.className = "active";
   tab.setAttribute("onclick",`toggleWindowDisplay('${windowId}')`);
   tab.innerHTML = `<a class="button">${app.icon}</a>`;
   document.getElementById("openApps").appendChild(tab);

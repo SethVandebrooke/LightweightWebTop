@@ -1,6 +1,3 @@
-var menu = document.querySelector(".menu");
-var menuVisible = false;
-
 function toggleMenu(command) {
   menu.style.display = command === "show" ? "block" : "none";
   menuVisible = !menuVisible;
@@ -12,17 +9,22 @@ function setMenuPosition({ top, left }) {
   toggleMenu("show");
 };
 
-window.addEventListener("click", e => {
-  if(menuVisible) {
-    toggleMenu("hide");
-  }
-});
+function initContextMenu() {
+  window.menu = document.querySelector(".menu");
+  window.menuVisible = false;
 
-window.addEventListener("contextmenu", function(e) {
-  e.preventDefault();
-  setMenuPosition({
-    left: e.pageX,
-    top: e.pageY
+  window.addEventListener("click", e => {
+    if(menuVisible) {
+      toggleMenu("hide");
+    }
   });
-  return false;
-});
+
+  window.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    setMenuPosition({
+      left: e.pageX,
+      top: e.pageY
+    });
+    return false;
+  });
+}

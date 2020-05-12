@@ -1,3 +1,10 @@
+:root {
+    --main-solid-bg-color: #FFF;
+    --main-trans-bg-color: rgba(255,255,255,1);
+    --main-text-color: #333;
+    --main-highlight: rgba(0,0,0,.2);
+    --main-shadow: 0 4px 7px 3px rgba(0, 0, 0, 0.4);
+}
 * {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-sizing: border-box;
@@ -9,12 +16,12 @@ body {
     background-color: white;
 }
 .window {
-    background-color: rgba(255,255,255,1);
-    color: #333;
+    background-color: var(--main-solid-bg-color);
+    color: var(--main-text-color);
     position: fixed;
     width: 600px;
     height: 400px;
-    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--main-shadow);
     outline: solid;
     outline-width: 1px;
     outline-color: #222;
@@ -26,19 +33,20 @@ body {
     display: inline-block;
     width: 100% !important;
     height: 100% !important;
-    margin-bottom: -30px;
+    padding-bottom: 50px !important;
 }
 .window-body {
     overflow: auto;
     width: inherit;
     height: inherit;
+    padding: 2px;
     padding-top: 30px;
 }
 .window-selected {
     z-index: 600;
 }
 .window-handle {
-    background-color: #fff;
+    background-color: var(--main-solid-bg-color);
     height: 30px;
     width: inherit;
     position: absolute;
@@ -56,13 +64,13 @@ body {
 }
 .window-actions li a {
     display: block;
-    color: #333;
+    color: var(--main-text-color);
     text-align: center;
     padding: 5px 10px;
     text-decoration: none;
 }
 .window-actions li .button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--main-highlight);
 }
 #mainwindow {
     display: inline-block;
@@ -77,7 +85,7 @@ body {
 #taskbar {
     height: 50px;
     width: 100%;
-    background-color: #fff;
+    background-color: var(--main-solid-bg-color);
     position: fixed;
     bottom: 0px;
     left: 0px;
@@ -93,16 +101,20 @@ body {
 .taskbar-slots li {
     float: left;
     cursor: pointer;
+    margin-right: 5px;
 }
 .taskbar-slots li a {
     display: block;
-    color: #333;
+    color: var(--main-text-color);
     text-align: center;
     padding: 15px 15px;
     text-decoration: none;
 }
+.active {
+    background-color: rgba(0, 0, 0, 0.15);
+}
 .taskbar-slots li .button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--main-highlight);
     cursor: pointer;
 }
 .taskbar-slot-right {
@@ -130,14 +142,14 @@ body {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff;
+    background-color: var(--main-solid-bg-color);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    box-shadow: var(--main-shadow);
     z-index: 100;
 }
 
 .dropdown-content a {
-    color: #333;
+    color: var(--main-text-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -145,7 +157,7 @@ body {
 }
 
 .dropdown-content a:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--main-highlight);
 }
 
 .dropdown:hover .dropdown-content {
@@ -154,9 +166,9 @@ body {
 
 .menu {
     min-width: 120px;
-    background-color: #fff;
-    color: #333;
-    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    background-color: var(--main-solid-bg-color);
+    color: var(--main-text-color);
+    box-shadow: var(--main-shadow);
     position: fixed;
     display: none;
     z-index: 1001;
@@ -172,7 +184,7 @@ body {
     cursor: pointer;
   }
   .menu .menu-options .menu-option:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--main-highlight);
   }
 
   .menu .dropdown-content {
@@ -187,24 +199,59 @@ body {
     position: fixed;
     bottom: 50px;
     left: 0px;
-    background-color: #fff;
+    background-color: var(--main-solid-bg-color);
     min-width: 300px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    box-shadow: var(--main-shadow);
     z-index: 1;
 }
 
 #mainmenu-content a {
-    color: #333;
+    color: var(--main-text-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
 }
 
-#mainmenu-content a:hover {background-color: rgba(0,0,0,0.2)}
+#mainmenu-content a:hover {background-color: var(--main-highlight)}
 
 .mainmenu:hover #mainmenu-content {
     display: block;
+}
+
+#chooseApplication {
+    background-color: var(--main-solid-bg-color);
+    color: var(--main-text-color);
+    box-shadow: var(--main-shadow);
+    width: 300px;
+    position: fixed;
+    top: 10px;
+    right: 0;
+    left: 0;
+    z-index: 1500;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#chooseApplication h2 {
+    text-align: center;
+}
+
+#chooseApplication ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0px;
+}
+
+#chooseApplication ul li {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#chooseApplication ul li:hover {
+    background: var(--main-highlight);
 }
 
 /* width */
@@ -271,6 +318,17 @@ body {
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
 
+  .flex-container {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+
+
 #wallpaper {
     background-image: url("../images/desk-wallpaper.jpg");
     background-color: #cccccc;
@@ -280,3 +338,20 @@ body {
     position: relative;
 }
 
+/*input designs*/
+
+input, button, textarea {
+    background-color: var(--main-solid-bg-color);
+    color: var(--main-text-color);
+    padding: 10px;
+    margin: 10px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: var(--main-text-color);
+}
+
+button:hover {
+    background: var(--main-highlight);
+    cursor: pointer;
+}
